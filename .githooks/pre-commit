@@ -1,0 +1,51 @@
+#!/bin/sh
+
+MAX_SIZE=$((50 * 1024 * 1024))   # 50 МБ в байтах
+errors=0
+
+files=$(git -c core.quotepath=false diff --cached --name-only --diff-filter=ACMR)
+
+if [ -z "$files" ]; then
+    exit 0
+fi
+
+while IFS= read -r f; do
+    [ -z "$f" ] && continue
+
+    case "$f" in
+        Saved/*|*/Saved/*|\
+        Intermediate/*|*/Intermediate/*|\
+        Binaries/*|*/Binaries/*|\
+        DerivedDataCache/*|*/DerivedDataCache/*|\
+        .vs/*|*/.vs/*)
+            echo "ОШИБКА: файл из служебной папки Unreal Engine нельзя коммитить:"
+            echo "        $f"
+            echo "        (Saved, Intermediate, Binaries, DerivedDataCache, .vs должны быть в .gitignore)"
+            errors=1
+            continue
+            ;;
+    esac
+
+    size=$(git cat-file -s ":$f" 2>/dev/null || echo 0)
+
+    if [ "$size" -gt "$MAX_SIZE" ]; then
+        filter=$(git check-attr filter -- "$f" | sed 's/^.*: //')
+        if [ "$filter" != "lfs" ]; then
+            size_mb=$((size / 1024 / 1024))
+            echo "ОШИБКА: файл больше 50 МБ не отслеживается через Git LFS:"
+            echo "        $f (${size_mb} МБ, filter=$filter)"
+            echo "        Добавьте его расширение в .gitattributes: git lfs track \"*.расширение\""
+            errors=1
+        fi
+    fi
+done <<EOF
+$files
+EOF
+
+if [ "$errors" -ne 0 ]; then
+    echo ""
+    echo "Коммит отклонён. Исправьте проблемы выше (git restore --staged <файл>) и повторите."
+    exit 1
+fi
+
+exit 0
