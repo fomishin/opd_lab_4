@@ -1,6 +1,5 @@
 # ==============================================================================
 # Unreal Engine Binary Files - .gitattributes
-# ==============================================================================
 
 # --- Основные ассеты Unreal Engine -------------------------------------------
 *.uasset filter=lfs diff=lfs merge=lfs -text
@@ -8,7 +7,6 @@
 *.upack filter=lfs diff=lfs merge=lfs -text
 *.udk filter=lfs diff=lfs merge=lfs -text
 *.upk filter=lfs diff=lfs merge=lfs -text
-
 # --- Локализация и скомпилированные ресурсы ----------------------------------
 *.locres filter=lfs diff=lfs merge=lfs -text
 *.locmeta filter=lfs diff=lfs merge=lfs -text
@@ -16,7 +14,6 @@
 *.ucas filter=lfs diff=lfs merge=lfs -text
 *.utoc filter=lfs diff=lfs merge=lfs -text
 *.sig filter=lfs diff=lfs merge=lfs -text
-
 # --- Скомпилированные бинарные файлы и библиотеки ----------------------------
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.exe filter=lfs diff=lfs merge=lfs -text
@@ -27,14 +24,11 @@
 *.pdb filter=lfs diff=lfs merge=lfs -text
 *.obj filter=lfs diff=lfs merge=lfs -text
 *.o filter=lfs diff=lfs merge=lfs -text
-
 # --- Сырые ресурсы: 3D-модели и анимация -------------------------------------
 *.fbx filter=lfs diff=lfs merge=lfs -text
-*.obj filter=lfs diff=lfs merge=lfs -text
 *.3ds filter=lfs diff=lfs merge=lfs -text
 *.dae filter=lfs diff=lfs merge=lfs -text
 *.blend filter=lfs diff=lfs merge=lfs -text
-
 # --- Сырые ресурсы: Изображения и текстуры -----------------------------------
 *.png filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
@@ -53,7 +47,6 @@
 *.xcf filter=lfs diff=lfs merge=lfs -text
 *.ico filter=lfs diff=lfs merge=lfs -text
 *.webp filter=lfs diff=lfs merge=lfs -text
-
 # --- Сырые ресурсы: Аудио ----------------------------------------------------
 *.wav filter=lfs diff=lfs merge=lfs -text
 *.mp3 filter=lfs diff=lfs merge=lfs -text
@@ -61,19 +54,16 @@
 *.flac filter=lfs diff=lfs merge=lfs -text
 *.m4a filter=lfs diff=lfs merge=lfs -text
 *.aac filter=lfs diff=lfs merge=lfs -text
-
 # --- Сырые ресурсы: Видео ----------------------------------------------------
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.avi filter=lfs diff=lfs merge=lfs -text
 *.mov filter=lfs diff=lfs merge=lfs -text
 *.mkv filter=lfs diff=lfs merge=lfs -text
-
 # --- Сырые ресурсы: Шрифты ---------------------------------------------------
 *.ttf filter=lfs diff=lfs merge=lfs -text
 *.otf filter=lfs diff=lfs merge=lfs -text
 *.woff filter=lfs diff=lfs merge=lfs -text
 *.woff2 filter=lfs diff=lfs merge=lfs -text
-
 # --- Архивы ------------------------------------------------------------------
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.rar filter=lfs diff=lfs merge=lfs -text
@@ -83,6 +73,5 @@
 *.bz2 filter=lfs diff=lfs merge=lfs -text
 *.xz filter=lfs diff=lfs merge=lfs -text
 *.zst filter=lfs diff=lfs merge=lfs -text
-
 # --- Прочие бинарные форматы, встречающиеся в проектах UE --------------------
 *.bpoly filter=lfs diff=lfs merge=lfs -text
